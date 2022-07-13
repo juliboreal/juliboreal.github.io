@@ -1,0 +1,14 @@
+{{ define "main" }}
+<div class="container my-5">
+
+  {{ $images := .Resources.ByType "image" }}
+  {{ range $images }}
+    {{ $image := .Fit "1400x1400" }}
+    <img class="w-100 img-fluid" src="{{ $image.Permalink }}">
+  {{ end }}  
+
+  {{ with .Title }}<h1 class="my-3">{{ . }}</h1>{{ end }}
+  {{ .Content }}
+
+</div>
+{{ end }}
